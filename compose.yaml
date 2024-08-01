@@ -10,3 +10,4 @@ services:
       - ./app:/app
     environment:
       TZ: Asia/Tokyo
+    tty: true
