@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: gol-react-app
+    network_mode: host
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    environment:
+      TZ: Asia/Tokyo
