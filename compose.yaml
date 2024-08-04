@@ -1,0 +1,21 @@
+services:
+  app:
+    container_name: gol-react-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./app:/app
+      - node_modules:/app/node_modules
+    # NOTE:
+    # 以下の指定だと、0.0.0.0:5173 へ転送される。
+    # localhost:5173 へ転送されてほしいため、コメントアウトした。
+    # ports:
+    #   - 5173:5173
+    environment:
+      TZ: Asia/Tokyo
+    tty: true
+
+volumes:
+  node_modules:
