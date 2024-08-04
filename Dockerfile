@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1
+
 ARG UBUNTU_VERSION=20.04
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-${UBUNTU_VERSION}
 
