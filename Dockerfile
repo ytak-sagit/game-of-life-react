@@ -1,5 +1,5 @@
-ARG BUN_VERSION=20.04
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-${BUN_VERSION}
+ARG UBUNTU_VERSION=20.04
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-${UBUNTU_VERSION}
 
 RUN set -x \
     && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
