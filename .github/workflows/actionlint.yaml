@@ -1,0 +1,22 @@
+name: actionlint - Static analysis for GitHub Actions workflows
+run-name: actionlint
+permissions:
+  contents: read
+on:
+  pull_request:
+    paths: ['.github/workflows/*.ya?ml']
+defaults:
+  run:
+    shell: bash
+concurrency:
+  # NOTE: 同一グループの場合、コミット追加時に、古いワークフローの実行を自動キャンセル
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: |  # ワークフロー静的解析の実行
+          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:latest
