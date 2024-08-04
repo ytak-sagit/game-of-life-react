@@ -11,7 +11,15 @@
     "vscode": {
       "extensions": [
         "biomejs.biome"
-      ]
+      ],
+      "settings": {
+        "files.autoSave": "off",
+        "editor.codeActionsOnSave": {
+          "quickfix.biome": "explicit",
+          "source.organizeImports.biome": "explicit"
+        },
+        "editor.defaultFormatter": "biomejs.biome"
+      }
     }
   }
 }
