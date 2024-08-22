@@ -16,7 +16,11 @@
         "files.autoSave": "off",
         "editor.codeActionsOnSave": {
           "quickfix.biome": "explicit",
-          "source.organizeImports.biome": "explicit"
+          "source.organizeImports.biome": "explicit",
+          // NOTE:
+          // biome.json の organizeImports を false へ変更したため、
+          // VSCode の organizeImports 設定を追加しておく
+          "source.organizeImports": "explicit"
         },
         "editor.defaultFormatter": "biomejs.biome"
       }
