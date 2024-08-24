@@ -7,6 +7,9 @@ import { Schale } from "./Schale";
 
 function App() {
   const [count, setCount] = useState(0);
+  const cells = [...Array(200)].map((_, i) => (
+    <Cell key={i} alive={Math.random() >= 0.5} />
+  ));
 
   return (
     <>
@@ -27,11 +30,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <Schale>
-        {[...Array(200)].map((_, i) => (
-          <Cell key={i} alive={Math.random() >= 0.5} />
-        ))}
-      </Schale>
+      <Schale>{cells}</Schale>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
