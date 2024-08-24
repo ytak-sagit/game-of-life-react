@@ -7,11 +7,15 @@ type CellProps = {
   alive?: boolean;
 };
 
-export const Cell = (props: CellProps) => {
+export const Cell: React.FC<CellProps> = ({
+  width = 8,
+  height = 8,
+  alive = false,
+}) => {
   const style: React.CSSProperties = {
-    width: props.width,
-    height: props.height,
-    backgroundColor: props.alive ? "#00ff2a" : "#333333",
+    width: width,
+    height: height,
+    backgroundColor: alive ? "#00ff2a" : "#333333",
     borderColor: "#333333",
   };
   return <div style={style} />;
