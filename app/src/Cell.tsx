@@ -8,8 +8,8 @@ type CellProps = {
 };
 
 export const Cell: React.FC<CellProps> = ({
-  width = 8,
-  height = 8,
+  width = 10,
+  height = 10,
   alive = false,
 }) => {
   const style: React.CSSProperties = {
