@@ -1,8 +1,8 @@
 type CellProps = {
   /** セルの横幅 */
-  width: number;
+  width?: number;
   /** セルの縦幅 */
-  height: number;
+  height?: number;
   /** セルの生死状態（true:生, false:死） */
   alive?: boolean;
 };
