@@ -1,7 +1,7 @@
 export const DEAD = 0 as const;
 export const ALIVE = 1 as const;
 
-type aliveState = typeof DEAD | typeof ALIVE;
+export type aliveState = typeof DEAD | typeof ALIVE;
 
 export const apply = (
   aliveStates: ReadonlyArray<aliveState>,
@@ -52,7 +52,7 @@ export const apply = (
   });
 };
 
-const isOutside = (
+export const isOutside = (
   index: number,
   widthWithOutside: number,
   heightWithOutside: number,
