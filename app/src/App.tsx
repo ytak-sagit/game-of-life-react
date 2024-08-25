@@ -7,8 +7,6 @@ import { Schale } from "./Schale";
 import { ALIVE, apply, DEAD, isOutside, type aliveState } from "./gol-rule";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const width = 80;
   const height = 80;
   const [aliveState, setAliveState] = useState(
@@ -20,8 +18,12 @@ function App() {
           : DEAD,
     ),
   );
-  const onClick = () =>
+  const [generation, setGeneration] = useState(0);
+
+  const onClick = () => {
     setAliveState((prev) => [...apply(prev, width, height)]);
+    setGeneration((prev) => prev + 1);
+  };
 
   const cells = aliveState
     .filter((_, i) => !isOutside(i, width + 2, height + 2))
@@ -45,13 +47,7 @@ function App() {
         <button type="button" onClick={onClick}>
           Next generation
         </button>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      <p>Generaion is #{generation}</p>
       <Schale width={width * 10} height={height * 10}>
         {cells}
       </Schale>
