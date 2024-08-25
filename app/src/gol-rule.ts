@@ -1,13 +1,14 @@
 export const DEAD = 0 as const;
 export const ALIVE = 1 as const;
 
-type aliveState = typeof DEAD | typeof ALIVE;
+export type aliveState = typeof DEAD | typeof ALIVE;
 
 export const apply = (
   aliveStates: ReadonlyArray<aliveState>,
   width: number,
   height: number,
 ) => {
+  // TODO: ビットボードのアルゴリズムで書き換える
   return aliveStates.map<aliveState>((state, index, states) => {
     const widthWithOutside = width + 2;
     const heightWithOutside = height + 2;
@@ -52,7 +53,7 @@ export const apply = (
   });
 };
 
-const isOutside = (
+export const isOutside = (
   index: number,
   widthWithOutside: number,
   heightWithOutside: number,

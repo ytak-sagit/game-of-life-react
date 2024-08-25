@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { Cell } from "./Cell";
+import { Schale } from "./Schale";
+import { ALIVE, apply, DEAD, isOutside, type aliveState } from "./gol-rule";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const width = 80;
+  const height = 80;
+  const [aliveState, setAliveState] = useState(
+    [...Array((width + 2) * (height + 2))].map<aliveState>((_, i) =>
+      // TODO: isOutsideを参照しないようにしたい
+      isOutside(i, width + 2, height + 2)
+        ? DEAD
+        : Math.random() >= 0.5
+          ? ALIVE
+          : DEAD,
+    ),
+  );
+  const [generation, setGeneration] = useState(0);
 
+  // TODO: setInterval/setTimeoutにより自動で描画が進むようにしたい
+  const onClick = () => {
+    setAliveState((prev) => [...apply(prev, width, height)]);
+    setGeneration((prev) => prev + 1);
+  };
+
+  // TODO: filterに余計な時間を要するため、外側の要素を保持しない方法としたい
+  const cells = aliveState
+    .filter((_, i) => !isOutside(i, width + 2, height + 2))
+    .map((alive, i) => {
+      const key = i;
+      return <Cell key={key} alive={Boolean(alive)} />;
+    });
+
+  // TODO: セルをクリックすることで生死をON/OFFできるようにしたい
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button type="button" onClick={onClick}>
+        Next generation
+      </button>
+      <p>Generaion is #{generation}</p>
+      <Schale width={width * 10} height={height * 10}>
+        {cells}
+      </Schale>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
