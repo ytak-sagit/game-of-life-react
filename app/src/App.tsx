@@ -9,6 +9,7 @@ function App() {
   const height = 80;
   const [aliveState, setAliveState] = useState(
     [...Array((width + 2) * (height + 2))].map<aliveState>((_, i) =>
+      // TODO: isOutsideを参照しないようにしたい
       isOutside(i, width + 2, height + 2)
         ? DEAD
         : Math.random() >= 0.5
@@ -18,11 +19,13 @@ function App() {
   );
   const [generation, setGeneration] = useState(0);
 
+  // TODO: setInterval/setTimeoutにより自動で描画が進むようにしたい
   const onClick = () => {
     setAliveState((prev) => [...apply(prev, width, height)]);
     setGeneration((prev) => prev + 1);
   };
 
+  // TODO: filterに余計な時間を要するため、外側の要素を保持しない方法としたい
   const cells = aliveState
     .filter((_, i) => !isOutside(i, width + 2, height + 2))
     .map((alive, i) => {
@@ -30,6 +33,7 @@ function App() {
       return <Cell key={key} alive={Boolean(alive)} />;
     });
 
+  // TODO: セルをクリックすることで生死をON/OFFできるようにしたい
   return (
     <>
       <button type="button" onClick={onClick}>

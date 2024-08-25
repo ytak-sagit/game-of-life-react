@@ -8,6 +8,7 @@ export const apply = (
   width: number,
   height: number,
 ) => {
+  // TODO: ビットボードのアルゴリズムで書き換える
   return aliveStates.map<aliveState>((state, index, states) => {
     const widthWithOutside = width + 2;
     const heightWithOutside = height + 2;
