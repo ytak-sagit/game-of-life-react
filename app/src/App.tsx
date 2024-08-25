@@ -7,6 +7,13 @@ import { Schale } from "./Schale";
 
 function App() {
   const [count, setCount] = useState(0);
+  // TODO: セルの生死判定をするのであれば、alive だけの配列で判定処理を実行し、それをコンポーネントに渡す必要がある
+  // const [aliveState, setAliveState] = useStete<(0 | 1)[]>([...Array(200).map<0 | 1>(_ => Math.random() >= 0.5 ? 1 : 0]));
+  // setAliveState((prev) => [...prev, ...judge(prev, 20, 10)]);
+  // const judge = (aliveStates: (0 | 1)[], width: number, height: number) => {
+  //   // 生死判定
+  //   // 近傍8セルの状態を取得して判定する
+  // };
   const cells = [...Array(200)].map((_, i) => (
     <Cell key={i} alive={Math.random() >= 0.5} />
   ));
