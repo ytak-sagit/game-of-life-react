@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
 type SchaleProps = {
   /** シャーレの横幅 */
   width?: number;
@@ -12,11 +15,11 @@ export const Schale: React.FC<SchaleProps> = ({
   height = 100,
   children: cells,
 }) => {
-  const style: React.CSSProperties = {
+  const schaleStyle = css({
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, 10px)",
     maxWidth: width,
     maxHeight: height,
-  };
-  return <div style={style}>{cells}</div>;
+  });
+  return <div css={schaleStyle}>{cells}</div>;
 };

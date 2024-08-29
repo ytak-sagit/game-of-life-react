@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
 type CellProps = {
   /** セルの横幅 */
   width?: number;
@@ -12,11 +15,11 @@ export const Cell: React.FC<CellProps> = ({
   height = 10,
   alive = false,
 }) => {
-  const style: React.CSSProperties = {
+  const cellStyle = css({
     width: width,
     height: height,
     backgroundColor: alive ? "#00ff2a" : "#333333",
     borderColor: "#333333",
-  };
-  return <div style={style} />;
+  });
+  return <div css={cellStyle} />;
 };
