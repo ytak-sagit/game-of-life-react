@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import { Cell } from "./Cell";
 import { Schale } from "./Schale";
@@ -19,10 +19,24 @@ function App() {
   );
   const [generation, setGeneration] = useState(0);
 
-  // TODO: setInterval/setTimeoutにより自動で描画が進むようにしたい
   const onClick = () => {
     setAliveState((prev) => [...apply(prev, width, height)]);
     setGeneration((prev) => prev + 1);
+  };
+
+  const [isSimulating, setIsSimulating] = useState(false);
+  const simulatingRef = useRef(isSimulating);
+  simulatingRef.current = isSimulating;
+  // TODO: useCallback() の導入検討
+  const simulating = () => {
+    if (!simulatingRef.current) {
+      return;
+    }
+
+    onClick();
+
+    // 再帰呼び出し
+    setTimeout(simulating, 100);
   };
 
   // TODO: filterに余計な時間を要するため、外側の要素を保持しない方法としたい
@@ -34,8 +48,27 @@ function App() {
     });
 
   // TODO: セルをクリックすることで生死をON/OFFできるようにしたい
+  // TODO: Start/Stopボタンのコンポーネント化
+  // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
     <>
+      <button
+        type="button"
+        onClick={() => {
+          setIsSimulating((prev) => !prev);
+          // NOTE:
+          // setState() は非同期で state を更新するため、
+          // setState() 直後は更新前の state の値が参照される
+          if (isSimulating) {
+            simulatingRef.current = false;
+          } else {
+            simulatingRef.current = true;
+            simulating();
+          }
+        }}
+      >
+        {isSimulating ? "Stop" : "Start"}
+      </button>
       <button type="button" onClick={onClick}>
         Next generation
       </button>
