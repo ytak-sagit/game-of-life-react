@@ -19,16 +19,16 @@ describe("有効系", () => {
 
 describe("無効系", () => {
   it.each(["1234", "abcd", "１１１１", "0x11"])(
-    "%p は変換できず undefined が返却されること",
+    "%p は変換できず Error がスローされること",
     (src) => {
       // Arrange
       // ->None
 
       // Act
-      const actual = toBinaryNumber(src);
+      const actual = () => toBinaryNumber(src);
 
       // Assert
-      expect(actual).toBe(undefined);
+      expect(actual).toThrow("指定した文字列は2進数へ変換できません");
     },
   );
 });
