@@ -8,7 +8,7 @@ const BINARY_PATTERN = /^(?=([01]+))\1$/;
  */
 export const toBinaryNumber = (src: string) => {
   if (!BINARY_PATTERN.test(src)) {
-    throw new Error("指定した文字列は2進数へ変換できません");
+    throw new Error(`指定した文字列は2進数へ変換できません: ${src}`);
   }
 
   return Number.parseInt(src, 2);

@@ -28,7 +28,7 @@ describe("無効系", () => {
       const actual = () => toBinaryNumber(src);
 
       // Assert
-      expect(actual).toThrow("指定した文字列は2進数へ変換できません");
+      expect(actual).toThrow(/指定した文字列は2進数へ変換できません/);
     },
   );
 });
