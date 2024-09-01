@@ -5,7 +5,7 @@ import { Schale } from "./Schale";
 import { ALIVE, apply, DEAD, isOutside, type aliveState } from "./gol-rule";
 
 function App() {
-  const width = 80;
+  const width = 32 * 3;
   const height = 80;
   const [aliveState, setAliveState] = useState(
     [...Array((width + 2) * (height + 2))].map<aliveState>((_, i) =>
