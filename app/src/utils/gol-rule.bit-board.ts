@@ -5,6 +5,7 @@ export type aliveState = typeof DEAD | typeof ALIVE;
 
 const PROCESS_BIT = 32; // 次世代を求める際の処理単位
 const MSB = 0x80000000; // 最上位bit
+const LSB = 0x00000001; // 最下位bit
 
 export const apply = (
   aliveStates: ReadonlyArray<aliveState>,
@@ -23,16 +24,13 @@ export const apply = (
         centralOffset,
       );
 
-      // 2進数を1bitずつに分割し、PROCESS_BIT 桁に達するまで先頭ゼロパディング
-      nextAliveStateBinaryNumber
-        .toString(2)
-        .padStart(PROCESS_BIT, "0")
-        .split("")
-        .map((s) => (s === "0" ? DEAD : ALIVE))
-        .forEach((aliveState, index) => {
-          const offset = centralOffset + index;
-          nextAliveStates[offset] = aliveState;
-        });
+      // 2進数を1bitずつに分割し、配列の対応位置に格納する
+      for (let i = 0; i < PROCESS_BIT; i++) {
+        const offset = centralOffset + i;
+        const digit = PROCESS_BIT - i - 1;
+        const aliveState = (nextAliveStateBinaryNumber >>> digit) & LSB;
+        nextAliveStates[offset] = aliveState as aliveState;
+      }
     }
   }
 
