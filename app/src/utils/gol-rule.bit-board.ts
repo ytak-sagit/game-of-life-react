@@ -53,19 +53,13 @@ const bitBoardCore = (
 
   // 注目セル範囲と近傍8箇所の取得
   const upLeft = aliveStates[upOffset - 1];
-  const up = toBinaryNumber(
-    aliveStates.slice(upOffset, upOffset + PROCESS_BIT).join(""),
-  );
+  const up = sum(aliveStates, upOffset);
   const upRight = aliveStates[upOffset + PROCESS_BIT] << (PROCESS_BIT - 1);
   const left = aliveStates[centralOffset - 1];
-  const central = toBinaryNumber(
-    aliveStates.slice(centralOffset, centralOffset + PROCESS_BIT).join(""),
-  );
+  const central = sum(aliveStates, centralOffset);
   const right = aliveStates[centralOffset + PROCESS_BIT] << (PROCESS_BIT - 1);
   const downLeft = aliveStates[downOffset - 1];
-  const down = toBinaryNumber(
-    aliveStates.slice(downOffset, downOffset + PROCESS_BIT).join(""),
-  );
+  const down = sum(aliveStates, downOffset);
   const downRight = aliveStates[downOffset + PROCESS_BIT] << (PROCESS_BIT - 1);
 
   if (!(up | left | central | right | down)) {
@@ -121,4 +115,21 @@ const bitBoardCore = (
   // 負数のままだと以降の処理で不都合があるため、
   // ビット符号なし右シフト演算子をかませて、符号なし整数として扱われるようにする。
   return aliveState >>> 0;
+};
+
+const sum = (aliveStates: ReadonlyArray<aliveState>, startIndex: number) => {
+  let sum = 0;
+  const endIndex = startIndex + PROCESS_BIT;
+
+  for (let i = startIndex; i < endIndex; i++) {
+    const aliveState = aliveStates[i];
+    if (aliveState === DEAD) {
+      continue;
+    }
+
+    const digit = PROCESS_BIT - (i - startIndex) - 1;
+    sum += aliveState << digit;
+  }
+
+  return sum;
 };
