@@ -1,5 +1,3 @@
-import { toBinaryNumber } from "./converter";
-
 export const DEAD = 0 as const;
 export const ALIVE = 1 as const;
 
