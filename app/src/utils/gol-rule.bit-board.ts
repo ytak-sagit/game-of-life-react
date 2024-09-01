@@ -65,14 +65,14 @@ const bitBoardCore = (
   }
 
   // 注目しているセル範囲の近傍8箇所の生死状態を計算する
-  let a = (up >>> 1) | ((upLeft & 0x01) === 0 ? 0 : MSB);
+  let a = (up >>> 1) | (!(upLeft & 0x01) ? 0 : MSB);
   let b = up;
-  let c = (up << 1) | ((upRight & 0x80) === 0 ? 0 : 1);
-  let d = (central >>> 1) | ((left & 0x01) === 0 ? 0 : MSB);
-  let e = (central << 1) | ((right & 0x80) === 0 ? 0 : 1);
-  let f = (down >>> 1) | ((downLeft & 0x01) === 0 ? 0 : MSB);
+  let c = (up << 1) | (!(upRight & 0x80) ? 0 : 1);
+  let d = (central >>> 1) | (!(left & 0x01) ? 0 : MSB);
+  let e = (central << 1) | (!(right & 0x80) ? 0 : 1);
+  let f = (down >>> 1) | (!(downLeft & 0x01) ? 0 : MSB);
   let g = down;
-  let h = (down << 1) | ((downRight & 0x80) === 0 ? 0 : 1);
+  let h = (down << 1) | (!(downRight & 0x80) ? 0 : 1);
 
   // a ... h の各ビットで1が立つところを求め、近傍8箇所の生存セルを計算する
   // NOTE: xab := a + b の上位ビット, xcd := c + d の上位ビット, ...
