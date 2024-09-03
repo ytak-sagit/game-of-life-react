@@ -8,10 +8,10 @@ export const apply = (
   width: number,
   height: number,
 ) => {
-  return aliveStates.map<aliveState>((state, index, states) => {
-    const widthWithOutside = width + 2;
-    const heightWithOutside = height + 2;
+  const widthWithOutside = width + 2;
+  const heightWithOutside = height + 2;
 
+  return aliveStates.map<aliveState>((state, index, states) => {
     if (isOutside(index, widthWithOutside, heightWithOutside)) {
       return DEAD;
     }
