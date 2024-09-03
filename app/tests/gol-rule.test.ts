@@ -139,6 +139,40 @@ test("2世代の経過後、ブリンカーは元の状態に戻ること", () =
   expect(actual).toEqual(expectedAfterTwoGenerations);
 });
 
+test("4世代の経過後、グライダーは右下1セル分移動していること", () => {
+  // Arrange
+  const width = 4;
+  const height = 4;
+  // 4x4 + 外側
+  // biome-ignore format: the array should not be formatted
+  const generation1 = [
+    D, D, D, D, D, D,
+    D, D, A, D, D, D,
+    D, D, D, A, D, D,
+    D, A, A, A, D, D,
+    D, D, D, D, D, D,
+    D, D, D, D, D, D,
+  ];
+  // biome-ignore format: the array should not be formatted
+  const expectedGeneration5 = [
+    D, D, D, D, D, D,
+    D, D, D, D, D, D,
+    D, D, D, A, D, D,
+    D, D, D, D, A, D,
+    D, D, A, A, A, D,
+    D, D, D, D, D, D,
+  ];
+  const generation2 = apply(generation1, width, height);
+  const generation3 = apply(generation2, width, height);
+  const generation4 = apply(generation3, width, height);
+
+  // Act
+  const actualGeneration5 = apply(generation4, width, height);
+
+  // Assert
+  expect(actualGeneration5).toEqual(expectedGeneration5);
+});
+
 test("apply()実行時間の計測", () => {
   // 計測方法の参考: https://qiita.com/bmjuggler/items/7b7673433a744b9ac87d
 
