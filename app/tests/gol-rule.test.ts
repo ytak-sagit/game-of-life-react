@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { ALIVE as A, apply, DEAD as D } from "../src/gol-rule";
+import { ALIVE as A, apply, DEAD as D, isOutside } from "../src/gol-rule";
 
 test("死亡セルに隣接する生存セルが3つあれば、次世代が誕生（生存へ変化）すること", () => {
   // Arrange
@@ -137,4 +137,24 @@ test("2世代の経過後、ブリンカーは元の状態に戻ること", () =
 
   // Assert
   expect(actual).toEqual(expectedAfterTwoGenerations);
+});
+
+test("apply()実行時間の計測", () => {
+  // 計測方法の参考: https://qiita.com/bmjuggler/items/7b7673433a744b9ac87d
+
+  const width = 1280;
+  const height = 800;
+  const testData = [...Array((width + 2) * (height + 2))].map((_, i) =>
+    isOutside(i, width + 2, height + 2) ? D : Math.random() >= 0.5 ? A : D,
+  );
+
+  const start = process.hrtime();
+
+  apply(testData, width, height);
+
+  const end = process.hrtime(start);
+  const time = end[0] * 1000 + end[1] / 1e6;
+
+  console.debug(`Execute time is ${time.toFixed(5)} ms`);
+  expect().pass();
 });
