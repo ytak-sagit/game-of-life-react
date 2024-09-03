@@ -8,7 +8,6 @@ export const apply = (
   width: number,
   height: number,
 ) => {
-  // TODO: ビットボードのアルゴリズムで書き換える
   return aliveStates.map<aliveState>((state, index, states) => {
     const widthWithOutside = width + 2;
     const heightWithOutside = height + 2;
@@ -28,28 +27,14 @@ export const apply = (
 
     const sumAliveCells =
       upLeft + up + upRight + left + right + downLeft + down + downRight;
-    if (state) {
-      // 生存
-      if (sumAliveCells === 2 || sumAliveCells === 3) {
-        return ALIVE;
-      }
 
-      // 過疎
-      if (sumAliveCells <= 1) {
-        return DEAD;
-      }
+    // 誕生or生存のパターンに該当すれば次世代は生存
+    // 過疎or過密orそれ以外のパターンであれば次世代は死亡
 
-      // 過密
-      // if (sumAliveCells >= 4)
-      return DEAD;
-    }
-
-    // 誕生
-    if (sumAliveCells === 3) {
-      return ALIVE;
-    }
-
-    return DEAD;
+    // 誕生: 現在の状態=死亡, 近傍の生存セル数=3
+    // 生存: 現在の状態=生存, 近傍の生存セル数=2or3
+    // よって、現在の状態と近傍の生存セル数のORをとった値がちょうど3であれば、次世代は生存となる
+    return (state | sumAliveCells) === 0b0011 ? ALIVE : DEAD;
   });
 };
 
