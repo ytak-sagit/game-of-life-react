@@ -2,19 +2,14 @@ import { useState } from "react";
 import "./App.css";
 import { Cell } from "./Cell";
 import { Schale } from "./Schale";
-import { ALIVE, apply, DEAD, isOutside, type aliveState } from "./gol-rule";
+import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
 
 function App() {
   const width = 80;
   const height = 80;
   const [aliveState, setAliveState] = useState(
-    [...Array((width + 2) * (height + 2))].map<aliveState>((_, i) =>
-      // TODO: isOutsideを参照しないようにしたい
-      isOutside(i, width + 2, height + 2)
-        ? DEAD
-        : Math.random() >= 0.5
-          ? ALIVE
-          : DEAD,
+    [...Array(width * height)].map<aliveState>(() =>
+      Math.random() >= 0.5 ? ALIVE : DEAD,
     ),
   );
   const [generation, setGeneration] = useState(0);
@@ -31,11 +26,10 @@ function App() {
   };
 
   const cells = aliveState.map((alive, i) => {
-    if (isOutside(i, width + 2, height + 2)) {
-      return null;
-    }
     const key = i;
-    return <Cell key={key} alive={Boolean(alive)} onClick={onClickCell(key)} />;
+    return (
+      <Cell key={key} alive={alive === ALIVE} onClick={onClickCell(key)} />
+    );
   });
 
   return (
