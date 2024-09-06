@@ -73,7 +73,7 @@ function App() {
         {isSimulating ? "Stop" : "Start"}
       </button>
       <button type="button" onClick={onClick}>
-        Next generation
+        Next
       </button>
       <button type="reset" onClick={onReset}>
         Reset
