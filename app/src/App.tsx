@@ -34,21 +34,6 @@ function App() {
     setTimeout(simulating, 100);
   };
 
-  const [isSimulating, setIsSimulating] = useState(false);
-  const simulatingRef = useRef(isSimulating);
-  simulatingRef.current = isSimulating;
-  // TODO: useCallback() の導入検討
-  const simulating = () => {
-    if (!simulatingRef.current) {
-      return;
-    }
-
-    onClick();
-
-    // 再帰呼び出し
-    setTimeout(simulating, 100);
-  };
-
   const onClickCell = (index: number) => () => {
     aliveState[index] ^= ALIVE;
     setAliveState([...aliveState]);
@@ -60,11 +45,6 @@ function App() {
       <Cell key={key} alive={alive === ALIVE} onClick={onClickCell(key)} />
     );
   });
-
-  const onReset = () => {
-    setAliveState(Array<aliveState>(aliveState.length).fill(DEAD));
-    setGeneration(0);
-  };
 
   const onReset = () => {
     setAliveState(Array<aliveState>(aliveState.length).fill(DEAD));
