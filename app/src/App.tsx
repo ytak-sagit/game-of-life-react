@@ -61,6 +61,16 @@ function App() {
     );
   });
 
+  const onReset = () => {
+    setAliveState(Array<aliveState>(aliveState.length).fill(DEAD));
+    setGeneration(0);
+  };
+
+  const onReset = () => {
+    setAliveState(Array<aliveState>(aliveState.length).fill(DEAD));
+    setGeneration(0);
+  };
+
   // TODO: Start/Stopボタンのコンポーネント化
   // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
@@ -84,6 +94,9 @@ function App() {
       </button>
       <button type="button" onClick={onClick}>
         Next generation
+      </button>
+      <button type="reset" onClick={onReset}>
+        Reset
       </button>
       <p>Generaion is #{generation}</p>
       <Schale width={width * 10} height={height * 10}>
