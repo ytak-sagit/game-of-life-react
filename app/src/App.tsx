@@ -3,11 +3,12 @@ import "./App.css";
 import { Cell } from "./Cell";
 import { Schale } from "./Schale";
 import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
-
-const CELL_WIDTH = 10;
-const CELL_HEIGHT = 10;
-const NUMBER_OF_CELLS_PER_ROW = 80;
-const NUMBER_OF_CELLS_PER_COL = 80;
+import {
+  CELL_HEIGHT,
+  CELL_WIDTH,
+  NUMBER_OF_CELLS_PER_COL,
+  NUMBER_OF_CELLS_PER_ROW,
+} from "./config/environments";
 
 function App() {
   const [aliveState, setAliveState] = useState(
