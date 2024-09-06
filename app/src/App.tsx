@@ -4,6 +4,9 @@ import { Cell } from "./Cell";
 import { Schale } from "./Schale";
 import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
 
+const CELL_WIDTH = 10;
+const CELL_HEIGHT = 10;
+
 function App() {
   const width = 80;
   const height = 80;
@@ -79,7 +82,11 @@ function App() {
         Reset
       </button>
       <p>Generaion is #{generation}</p>
-      <Schale width={width * 10} height={height * 10}>
+      <Schale
+        cellWidth={CELL_WIDTH}
+        maxWidth={CELL_WIDTH * width}
+        maxHeight={CELL_HEIGHT * height}
+      >
         {cells}
       </Schale>
     </>
