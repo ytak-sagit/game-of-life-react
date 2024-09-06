@@ -6,10 +6,10 @@ import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
 
 const CELL_WIDTH = 10;
 const CELL_HEIGHT = 10;
+const width = 80;
+const height = 80;
 
 function App() {
-  const width = 80;
-  const height = 80;
   const [aliveState, setAliveState] = useState(
     [...Array(width * height)].map<aliveState>(() =>
       Math.random() >= 0.5 ? ALIVE : DEAD,
