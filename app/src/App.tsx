@@ -1,23 +1,43 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import { Cell } from "./Cell";
 import { Schale } from "./Schale";
 import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
+import {
+  CELL_HEIGHT,
+  CELL_WIDTH,
+  NUMBER_OF_CELLS_PER_COL,
+  NUMBER_OF_CELLS_PER_ROW,
+} from "./config/environments";
 
 function App() {
-  const width = 80;
-  const height = 80;
   const [aliveState, setAliveState] = useState(
-    [...Array(width * height)].map<aliveState>(() =>
-      Math.random() >= 0.5 ? ALIVE : DEAD,
-    ),
+    [
+      ...Array(NUMBER_OF_CELLS_PER_ROW * NUMBER_OF_CELLS_PER_COL),
+    ].map<aliveState>(() => (Math.random() >= 0.5 ? ALIVE : DEAD)),
   );
   const [generation, setGeneration] = useState(0);
 
-  // TODO: setInterval/setTimeoutにより自動で描画が進むようにしたい
   const onClick = () => {
-    setAliveState((prev) => [...apply(prev, width, height)]);
+    setAliveState((prev) => [
+      ...apply(prev, NUMBER_OF_CELLS_PER_ROW, NUMBER_OF_CELLS_PER_COL),
+    ]);
     setGeneration((prev) => prev + 1);
+  };
+
+  const [isSimulating, setIsSimulating] = useState(false);
+  const simulatingRef = useRef(isSimulating);
+  simulatingRef.current = isSimulating;
+  // TODO: useCallback() の導入検討
+  const simulating = () => {
+    if (!simulatingRef.current) {
+      return;
+    }
+
+    onClick();
+
+    // 再帰呼び出し
+    setTimeout(simulating, 100);
   };
 
   const onClickCell = (index: number) => () => {
@@ -37,16 +57,39 @@ function App() {
     setGeneration(0);
   };
 
+  // TODO: Start/Stopボタンのコンポーネント化
+  // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
     <>
+      <button
+        type="button"
+        onClick={() => {
+          setIsSimulating((prev) => !prev);
+          // NOTE:
+          // setState() は非同期で state を更新するため、
+          // setState() 直後は更新前の state の値が参照される
+          if (isSimulating) {
+            simulatingRef.current = false;
+          } else {
+            simulatingRef.current = true;
+            simulating();
+          }
+        }}
+      >
+        {isSimulating ? "Stop" : "Start"}
+      </button>
       <button type="button" onClick={onClick}>
-        Next generation
+        Next
       </button>
       <button type="reset" onClick={onReset}>
         Reset
       </button>
       <p>Generaion is #{generation}</p>
-      <Schale width={width * 10} height={height * 10}>
+      <Schale
+        cellWidth={CELL_WIDTH}
+        maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
+        maxHeight={CELL_HEIGHT * NUMBER_OF_CELLS_PER_COL}
+      >
         {cells}
       </Schale>
     </>

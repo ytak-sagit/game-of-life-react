@@ -2,24 +2,27 @@
 import { css } from "@emotion/react";
 
 type SchaleProps = {
-  /** シャーレの横幅 */
-  width?: number;
-  /** シャーレの縦幅 */
-  height?: number;
+  /** セルの横幅 */
+  cellWidth: number;
+  /** 1行あたりの最大セル配置件数 */
+  maxWidth: number;
+  /** 1列あたりの最大セル配置件数 */
+  maxHeight: number;
   /** セルのリスト */
   children: React.ReactNode;
 };
 
 export const Schale: React.FC<SchaleProps> = ({
-  width = 200,
-  height = 100,
+  cellWidth,
+  maxWidth,
+  maxHeight,
   children: cells,
 }) => {
   const schaleStyle = css({
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, 10px)",
-    maxWidth: width,
-    maxHeight: height,
+    gridTemplateColumns: `repeat(auto-fill, ${cellWidth}px)`,
+    maxWidth,
+    maxHeight,
   });
   return <div css={schaleStyle}>{cells}</div>;
 };
