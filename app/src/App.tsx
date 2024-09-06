@@ -6,19 +6,21 @@ import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
 
 const CELL_WIDTH = 10;
 const CELL_HEIGHT = 10;
-const width = 80;
-const height = 80;
+const NUMBER_OF_CELLS_PER_ROW = 80;
+const NUMBER_OF_CELLS_PER_COL = 80;
 
 function App() {
   const [aliveState, setAliveState] = useState(
-    [...Array(width * height)].map<aliveState>(() =>
-      Math.random() >= 0.5 ? ALIVE : DEAD,
-    ),
+    [
+      ...Array(NUMBER_OF_CELLS_PER_ROW * NUMBER_OF_CELLS_PER_COL),
+    ].map<aliveState>(() => (Math.random() >= 0.5 ? ALIVE : DEAD)),
   );
   const [generation, setGeneration] = useState(0);
 
   const onClick = () => {
-    setAliveState((prev) => [...apply(prev, width, height)]);
+    setAliveState((prev) => [
+      ...apply(prev, NUMBER_OF_CELLS_PER_ROW, NUMBER_OF_CELLS_PER_COL),
+    ]);
     setGeneration((prev) => prev + 1);
   };
 
@@ -84,8 +86,8 @@ function App() {
       <p>Generaion is #{generation}</p>
       <Schale
         cellWidth={CELL_WIDTH}
-        maxWidth={CELL_WIDTH * width}
-        maxHeight={CELL_HEIGHT * height}
+        maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
+        maxHeight={CELL_HEIGHT * NUMBER_OF_CELLS_PER_COL}
       >
         {cells}
       </Schale>
