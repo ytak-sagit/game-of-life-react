@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import "./App.css";
-import { Cell } from "./Cell";
-import { Schale } from "./Schale";
-import { ALIVE, apply, DEAD, type aliveState } from "./gol-rule";
+import "~/App.css";
+import { Cell } from "~/Cell";
+import { Schale } from "~/Schale";
 import {
   CELL_HEIGHT,
   CELL_WIDTH,
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
-} from "./config/environments";
+} from "~/config/environments";
+import { ALIVE, apply, DEAD, type aliveState } from "~/gol-rule";
 
 function App() {
   const [aliveState, setAliveState] = useState(
