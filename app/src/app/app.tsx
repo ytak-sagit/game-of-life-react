@@ -9,7 +9,7 @@ import { Cell } from "~/features/cell/cell";
 import { Schale } from "~/features/schale/schale";
 import { ALIVE, apply, DEAD, type aliveState } from "~/utils/gol-rule";
 
-function App() {
+export const App = () => {
   const [aliveState, setAliveState] = useState(
     [
       ...Array(NUMBER_OF_CELLS_PER_ROW * NUMBER_OF_CELLS_PER_COL),
@@ -93,6 +93,4 @@ function App() {
       </Schale>
     </>
   );
-}
-
-export default App;
+};
