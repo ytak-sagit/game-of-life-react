@@ -8,7 +8,7 @@ import {
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
-import { ALIVE, apply, DEAD, type aliveState } from "~/gol-rule";
+import { ALIVE, apply, DEAD, type aliveState } from "~/utils/gol-rule";
 
 function App() {
   const [aliveState, setAliveState] = useState(
