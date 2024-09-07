@@ -7,13 +7,14 @@ import {
 } from "~/config/environments";
 import { Cell } from "~/features/cell";
 import { Schale } from "~/features/schale";
+import { random } from "~/utils/gol-pattern-generator";
 import { ALIVE, apply, DEAD, type aliveState } from "~/utils/gol-rule";
 
 export const App = () => {
   const [aliveState, setAliveState] = useState(
     [
       ...Array(NUMBER_OF_CELLS_PER_ROW * NUMBER_OF_CELLS_PER_COL),
-    ].map<aliveState>(() => (Math.random() >= 0.5 ? ALIVE : DEAD)),
+    ].map<aliveState>(random),
   );
   const [generation, setGeneration] = useState(0);
 
