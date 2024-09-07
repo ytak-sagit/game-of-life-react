@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { ALIVE as A, apply, DEAD as D } from "../../src/utils/gol-rule";
+import { ALIVE as A, apply, DEAD as D } from "../../utils/gol-rule";
 
 test("死亡セルに隣接する生存セルが3つあれば、次世代が誕生（生存へ変化）すること", () => {
   // Arrange
