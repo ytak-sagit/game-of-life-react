@@ -7,7 +7,7 @@ import {
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
 import { Cell } from "~/features/cell/cell";
-import { Schale } from "~/Schale";
+import { Schale } from "~/features/schale/schale";
 import { ALIVE, apply, DEAD, type aliveState } from "~/utils/gol-rule";
 
 function App() {
