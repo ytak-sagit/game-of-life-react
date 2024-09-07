@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "~/App.css";
+import "~/app/app.css";
 import {
   CELL_HEIGHT,
   CELL_WIDTH,
