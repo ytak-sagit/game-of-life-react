@@ -14,9 +14,9 @@ export const useCellStates = () => {
   const [generation, setGeneration] = useState(0);
 
   const incrementCellStates = () => {
-    setCellStates((prev) => [
-      ...apply(prev, NUMBER_OF_CELLS_PER_ROW, NUMBER_OF_CELLS_PER_COL),
-    ]);
+    setCellStates((prev) =>
+      apply(prev, NUMBER_OF_CELLS_PER_ROW, NUMBER_OF_CELLS_PER_COL),
+    );
     setGeneration((prev) => prev + 1);
   };
 
