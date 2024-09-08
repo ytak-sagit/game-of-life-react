@@ -10,7 +10,7 @@ export const apply = (
 ) => {
   const nextAliveStates = Array<aliveState>(aliveStates.length);
 
-  for (let i = 0; i < width * height; i++) {
+  for (let i = 0; i < aliveStates.length; i++) {
     const _isUpEdge = isUpEdge(i, width);
     const _isDownEdge = isDownEdge(i, width, height);
     const _isLeftEdge = isLeftEdge(i, width);
