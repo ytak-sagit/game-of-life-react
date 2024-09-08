@@ -8,7 +8,6 @@ import { Cell } from "~/features/cell";
 import { Schale } from "~/features/schale";
 import { useCellStates } from "~/hooks/use-cell-states";
 import { usePolling } from "~/hooks/use-polling";
-import { ALIVE } from "~/utils/gol-rule";
 
 export const App = () => {
   const {
@@ -23,11 +22,7 @@ export const App = () => {
   const cells = cellStates.map((state, i) => {
     const key = i;
     return (
-      <Cell
-        key={key}
-        alive={state === ALIVE}
-        onClick={toggleCellStateAt(key)}
-      />
+      <Cell key={key} alive={Boolean(state)} onClick={toggleCellStateAt(key)} />
     );
   });
 
