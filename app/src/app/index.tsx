@@ -1,3 +1,4 @@
+import { FlexList } from "~/components/flex-list";
 import {
   CELL_HEIGHT,
   CELL_WIDTH,
@@ -35,15 +36,17 @@ export const App = () => {
   // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
     <>
-      <button type="button" onClick={onClickStartOrStop}>
-        {isPolling ? "Stop" : "Start"}
-      </button>
-      <button type="button" onClick={onClickNext}>
-        Next
-      </button>
-      <button type="reset" onClick={onReset}>
-        Reset
-      </button>
+      <FlexList>
+        <button type="button" onClick={onClickStartOrStop}>
+          {isPolling ? "Stop" : "Start"}
+        </button>
+        <button type="button" onClick={onClickNext}>
+          Next
+        </button>
+        <button type="reset" onClick={onReset}>
+          Reset
+        </button>
+      </FlexList>
       <Generation value={generation} />
       <Schale
         cellWidth={CELL_WIDTH}
