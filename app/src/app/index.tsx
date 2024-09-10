@@ -35,7 +35,7 @@ export const App = () => {
   // TODO: Start/Stopボタンのコンポーネント化
   // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
-    <>
+    <main>
       <FlexList>
         <button type="button" onClick={onClickStartOrStop}>
           {isPolling ? "Stop" : "Start"}
@@ -55,6 +55,6 @@ export const App = () => {
       >
         {cells}
       </Schale>
-    </>
+    </main>
   );
 };
