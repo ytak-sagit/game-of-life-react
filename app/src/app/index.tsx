@@ -40,10 +40,10 @@ export const App = () => {
         <button type="button" onClick={onClickStartOrStop}>
           {isPolling ? "Stop" : "Start"}
         </button>
-        <button type="button" onClick={onClickNext}>
+        <button type="button" onClick={onClickNext} disabled={isPolling}>
           Next
         </button>
-        <button type="reset" onClick={onReset}>
+        <button type="reset" onClick={onReset} disabled={isPolling}>
           Reset
         </button>
       </FlexList>
