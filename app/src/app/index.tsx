@@ -5,6 +5,7 @@ import {
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
 import { Cell } from "~/features/cell";
+import { Generation } from "~/features/generation";
 import { Schale } from "~/features/schale";
 import { useCellStates } from "~/hooks/use-cell-states";
 import { usePolling } from "~/hooks/use-polling";
@@ -43,7 +44,7 @@ export const App = () => {
       <button type="reset" onClick={onReset}>
         Reset
       </button>
-      <p>Generaion is #{generation}</p>
+      <Generation value={generation} />
       <Schale
         cellWidth={CELL_WIDTH}
         maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
