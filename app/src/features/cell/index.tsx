@@ -10,12 +10,13 @@ type CellProps = {
   alive?: boolean;
   /** セルのクリック時イベントハンドラ */
   onClick: () => void;
-};
+} & Pick<HTMLButtonElement, "disabled">;
 
 export const Cell: React.FC<CellProps> = ({
   width = 10,
   height = 10,
   alive = false,
+  disabled = false,
   onClick,
 }) => {
   const cellStyle = css({
@@ -27,5 +28,12 @@ export const Cell: React.FC<CellProps> = ({
     paddingBlock: "unset",
     paddingInline: "inherit",
   });
-  return <button type="button" css={cellStyle} onClick={onClick} />;
+  return (
+    <button
+      type="button"
+      css={cellStyle}
+      onClick={onClick}
+      aria-disabled={disabled}
+    />
+  );
 };

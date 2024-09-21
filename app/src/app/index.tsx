@@ -21,10 +21,21 @@ export const App = () => {
   } = useCellStates();
   const { isPolling, togglePolling } = usePolling(incrementCellStates, 100);
 
-  const cells = cellStates.map((state, i) => {
-    const key = i;
+  const onClickCell = (index: number) => () => {
+    if (isPolling) {
+      return;
+    }
+    toggleCellStateAt(index);
+  };
+  const cells = cellStates.map((state, index) => {
     return (
-      <Cell key={key} alive={Boolean(state)} onClick={toggleCellStateAt(key)} />
+      <Cell
+        // biome-ignore lint: safe map index of array to key because static
+        key={index}
+        alive={Boolean(state)}
+        disabled={isPolling}
+        onClick={onClickCell(index)}
+      />
     );
   });
 
@@ -32,8 +43,6 @@ export const App = () => {
   const onClickNext = () => incrementCellStates();
   const onReset = () => resetCellStates();
 
-  // TODO: Start/Stopボタンのコンポーネント化
-  // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
     <main>
       <FlexList>
