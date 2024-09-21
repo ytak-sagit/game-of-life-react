@@ -39,6 +39,10 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+button:disabled,
+button[aria-disabled=true] {
+  cursor: not-allowed;
+}
 
 #root {
   max-width: 1280px;
