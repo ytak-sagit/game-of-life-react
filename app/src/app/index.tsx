@@ -1,3 +1,4 @@
+import { FlexList } from "~/components/flex-list";
 import {
   CELL_HEIGHT,
   CELL_WIDTH,
@@ -5,6 +6,7 @@ import {
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
 import { Cell } from "~/features/cell";
+import { Generation } from "~/features/generation";
 import { Schale } from "~/features/schale";
 import { useCellStates } from "~/hooks/use-cell-states";
 import { usePolling } from "~/hooks/use-polling";
@@ -19,10 +21,21 @@ export const App = () => {
   } = useCellStates();
   const { isPolling, togglePolling } = usePolling(incrementCellStates, 100);
 
-  const cells = cellStates.map((state, i) => {
-    const key = i;
+  const onClickCell = (index: number) => () => {
+    if (isPolling) {
+      return;
+    }
+    toggleCellStateAt(index);
+  };
+  const cells = cellStates.map((state, index) => {
     return (
-      <Cell key={key} alive={Boolean(state)} onClick={toggleCellStateAt(key)} />
+      <Cell
+        // biome-ignore lint: safe map index of array to key because static
+        key={index}
+        alive={Boolean(state)}
+        disabled={isPolling}
+        onClick={onClickCell(index)}
+      />
     );
   });
 
@@ -30,20 +43,20 @@ export const App = () => {
   const onClickNext = () => incrementCellStates();
   const onReset = () => resetCellStates();
 
-  // TODO: Start/Stopボタンのコンポーネント化
-  // TODO: Startボタン活性時、Next generationボタンを非活性にする
   return (
-    <>
-      <button type="button" onClick={onClickStartOrStop}>
-        {isPolling ? "Stop" : "Start"}
-      </button>
-      <button type="button" onClick={onClickNext}>
-        Next
-      </button>
-      <button type="reset" onClick={onReset}>
-        Reset
-      </button>
-      <p>Generaion is #{generation}</p>
+    <main>
+      <FlexList>
+        <button type="button" onClick={onClickStartOrStop}>
+          {isPolling ? "Stop" : "Start"}
+        </button>
+        <button type="button" onClick={onClickNext} disabled={isPolling}>
+          Next
+        </button>
+        <button type="reset" onClick={onReset} disabled={isPolling}>
+          Reset
+        </button>
+      </FlexList>
+      <Generation value={generation} />
       <Schale
         cellWidth={CELL_WIDTH}
         maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
@@ -51,6 +64,6 @@ export const App = () => {
       >
         {cells}
       </Schale>
-    </>
+    </main>
   );
 };

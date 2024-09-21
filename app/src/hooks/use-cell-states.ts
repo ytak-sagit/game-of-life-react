@@ -25,7 +25,7 @@ export const useCellStates = () => {
     setGeneration(0);
   };
 
-  const toggleCellStateAt = (index: number) => () => {
+  const toggleCellStateAt = (index: number) => {
     cellStates[index] ^= ALIVE;
     setCellStates([...cellStates]);
   };
