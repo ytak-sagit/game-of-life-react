@@ -6,11 +6,11 @@ export const ALIVE: u8 = 1;
 // export type CellAliveState = typeof DEAD | typeof ALIVE;
 
 export function apply(
-  currentCellStates: Int32Array,
+  currentCellStates: Int16Array,
   width: i32,
   height: i32,
-): Int32Array {
-  const nextCellStates = new Int32Array(currentCellStates.length);
+): Int16Array {
+  const nextCellStates = new Int16Array(currentCellStates.length);
 
   for (let i = 0; i < currentCellStates.length; i++) {
     const _isUpEdge = isUpEdge(i, width);
