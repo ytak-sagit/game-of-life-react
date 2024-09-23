@@ -18,6 +18,8 @@ export const FlexList: React.FC<FlexListProps> = ({
     justifyContent: "center",
     columnGap: `${gapSizePx}px`,
     listStyle: "none",
+    paddingInlineStart: "unset",
+    marginBlock: "unset",
   });
 
   return (
