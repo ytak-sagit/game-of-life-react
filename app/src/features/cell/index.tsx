@@ -23,7 +23,7 @@ export const Cell: React.FC<CellProps> = ({
     width: width,
     height: height,
     backgroundColor: alive ? "#00ff2a" : "#333333",
-    borderColor: "#333333",
+    borderColor: "#484848",
     borderRadius: "0",
     paddingBlock: "unset",
     paddingInline: "inherit",
