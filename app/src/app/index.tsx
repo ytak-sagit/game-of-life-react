@@ -1,3 +1,4 @@
+import type { ChangeEvent } from "react";
 import { FlexList } from "~/components/flex-list";
 import {
   CELL_HEIGHT,
@@ -7,6 +8,7 @@ import {
 } from "~/config/environments";
 import { Cell } from "~/features/cell";
 import { Generation } from "~/features/generation";
+import { PatternPulldownList } from "~/features/pattern-pulldown-list";
 import { Schale } from "~/features/schale";
 import { useCellStates } from "~/hooks/use-cell-states";
 import { usePolling } from "~/hooks/use-polling";
@@ -18,6 +20,7 @@ export const App = () => {
     incrementCellStates,
     resetCellStates,
     toggleCellStateAt,
+    renderCellPattern,
   } = useCellStates();
   const { isPolling, togglePolling } = usePolling(incrementCellStates, 100);
 
@@ -39,6 +42,13 @@ export const App = () => {
     );
   });
 
+  const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    if (isPolling) {
+      return;
+    }
+    renderCellPattern(event.target.value);
+  };
+
   const onClickStartOrStop = () => togglePolling();
   const onClickNext = () => incrementCellStates();
   const onReset = () => resetCellStates();
@@ -55,6 +65,7 @@ export const App = () => {
         <button type="reset" onClick={onReset} disabled={isPolling}>
           Reset
         </button>
+        <PatternPulldownList onChange={onChange} disabled={isPolling} />
       </FlexList>
       <Generation value={generation} />
       <Schale
