@@ -196,3 +196,13 @@ export const patternStore = {
   heavyweightSpaceship,
   pufferTrain,
 } as const;
+
+export type PatternStoreKey = keyof typeof patternStore;
+
+const patternNames = Object.keys(patternStore);
+
+export function isValidPatternName(
+  patternName: string,
+): patternName is PatternStoreKey {
+  return patternNames.includes(patternName);
+}
