@@ -4,6 +4,7 @@ import {
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
 import { random } from "~/utils/gol-pattern-generator";
+import { renderPattern } from "~/utils/gol-pattern-renderer";
 import { ALIVE, apply, DEAD } from "~/utils/gol-rule";
 
 // TODO: hooks rename
@@ -30,12 +31,23 @@ export const useCellStates = () => {
     setCellStates([...cellStates]);
   };
 
+  const renderCellPattern = (patternName: string) => {
+    const renderedCellStates = renderPattern(
+      patternName,
+      NUMBER_OF_CELLS_PER_ROW,
+      cellStates.length,
+    );
+    setCellStates(renderedCellStates);
+    setGeneration(0);
+  };
+
   return {
     cellStates,
     generation,
     incrementCellStates,
     resetCellStates,
     toggleCellStateAt,
+    renderCellPattern,
   };
 };
 
