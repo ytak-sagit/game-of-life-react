@@ -25,12 +25,12 @@ export const patternStore = {
   pufferTrain,
 } as const;
 
-export type PatternStoreKey = keyof typeof patternStore;
+export type PatternName = keyof typeof patternStore;
 
 const patternNames = Object.keys(patternStore);
 
 export function isValidPatternName(
   patternName: string,
-): patternName is PatternStoreKey {
+): patternName is PatternName {
   return patternNames.includes(patternName);
 }
