@@ -8,7 +8,7 @@ type PatternPulldownListProps = Required<
 >;
 
 type SelectOption = {
-  value: PatternName | "";
+  value: PatternName;
   label: string;
 };
 
@@ -17,8 +17,7 @@ export const PatternPulldownList: React.FC<PatternPulldownListProps> = ({
   disabled,
 }) => {
   const selectOptions: ReadonlyArray<SelectOption> = [
-    { value: "", label: "" },
-    // TODO: ランダムも欲しい...というか初期値がランダムで良いような
+    { value: "random", label: "ランダム" },
     { value: "glider", label: "グライダー" },
     { value: "gliderGun", label: "グライダー銃" },
     { value: "pulsar", label: "パルサー" },
@@ -47,7 +46,12 @@ export const PatternPulldownList: React.FC<PatternPulldownListProps> = ({
 
   // TODO: 描画範囲を超えるパターンのoptionはdisabledとする
   return (
-    <select css={selectStyle} onChange={onChange} disabled={disabled}>
+    <select
+      css={selectStyle}
+      onChange={onChange}
+      disabled={disabled}
+      defaultValue={"random"}
+    >
       {selectOptions.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}

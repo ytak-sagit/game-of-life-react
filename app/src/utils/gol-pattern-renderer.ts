@@ -10,6 +10,10 @@ export const renderPattern = (
     return [];
   }
 
+  if (patternName === "random") {
+    return [...Array(sumOfCells)].map(patternStore[patternName]);
+  }
+
   const cellStates = Array<CellAliveState>(sumOfCells).fill(DEAD);
   const patternConfigs = patternStore[patternName];
   const offsetRenderingBegin = numberOfCellsPerRow + 1;
