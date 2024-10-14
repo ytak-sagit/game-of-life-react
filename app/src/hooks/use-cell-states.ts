@@ -3,9 +3,10 @@ import {
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
+import { initialize } from "~/utils/gol-pattern-initializer";
 import { renderPattern } from "~/utils/gol-pattern-renderer";
 import { patternStore } from "~/utils/gol-pattern-store";
-import { ALIVE, apply, DEAD } from "~/utils/gol-rule";
+import { ALIVE, apply } from "~/utils/gol-rule";
 
 // TODO: hooks rename
 export const useCellStates = () => {
@@ -22,7 +23,7 @@ export const useCellStates = () => {
   };
 
   const resetCellStates = () => {
-    setCellStates(Array(SUM_OF_CELLS).fill(DEAD));
+    setCellStates(initialize(SUM_OF_CELLS));
     setGeneration(0);
   };
 

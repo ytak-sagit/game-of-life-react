@@ -1,5 +1,5 @@
+import { initialize } from "./gol-pattern-initializer";
 import { isValidPatternName, patternStore } from "./gol-pattern-store";
-import { DEAD, type CellAliveState } from "./gol-rule";
 
 export const renderPattern = (
   patternName: string,
@@ -14,7 +14,7 @@ export const renderPattern = (
     return patternStore.random(sumOfCells);
   }
 
-  const cellStates = Array<CellAliveState>(sumOfCells).fill(DEAD);
+  const cellStates = initialize(sumOfCells);
   const patternConfigs = patternStore[patternName];
   const offsetRenderingBegin = numberOfCellsPerRow + 1;
 
