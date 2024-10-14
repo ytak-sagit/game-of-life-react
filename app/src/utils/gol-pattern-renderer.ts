@@ -1,4 +1,4 @@
-import { isValidPatternName, patternStore } from "./gol-pattern-generator";
+import { isValidPatternName, patternStore } from "./gol-pattern-store";
 import { DEAD, type CellAliveState } from "./gol-rule";
 
 export const renderPattern = (

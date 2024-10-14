@@ -3,8 +3,8 @@ import {
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
-import { patternStore } from "~/utils/gol-pattern-generator";
 import { renderPattern } from "~/utils/gol-pattern-renderer";
+import { patternStore } from "~/utils/gol-pattern-store";
 import { ALIVE, apply, DEAD } from "~/utils/gol-rule";
 
 // TODO: hooks rename

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import type { SelectHTMLAttributes } from "react";
-import type { PatternName } from "~/utils/gol-pattern-generator";
+import type { PatternName } from "~/utils/gol-pattern-store";
 
 type PatternPulldownListProps = Required<
   Pick<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "disabled">
