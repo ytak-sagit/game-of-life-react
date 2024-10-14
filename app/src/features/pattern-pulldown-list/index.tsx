@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-// import { css } from "@emotion/react";
+import { css } from "@emotion/react";
 import type { SelectHTMLAttributes } from "react";
 import type { PatternStoreKey } from "~/utils/gol-pattern-generator";
 
@@ -31,11 +31,23 @@ export const PatternPulldownList: React.FC<PatternPulldownListProps> = ({
     { value: "pufferTrain", label: "ｼｭｼｭﾎﾟｯﾎﾟ列車" },
   ];
 
-  // TODO: selectのstyle調整
-  // TODO: select disabled時のカーソルアイコン
+  const selectStyle = css({
+    borderRadius: "6px",
+    border: "1px solid transparent",
+    padding: "0.6em 0.6em",
+    fontSize: "1em",
+    fontWeight: 500,
+    fontFamily: "inherit",
+    cursor: "pointer",
+    transition: "border-color 0.25s",
+    ":hover": {
+      borderColor: "#646cff",
+    },
+  });
+
   // TODO: 描画範囲を超えるパターンのoptionはdisabledとする
   return (
-    <select onChange={onChange} disabled={disabled}>
+    <select css={selectStyle} onChange={onChange} disabled={disabled}>
       {selectOptions.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}
