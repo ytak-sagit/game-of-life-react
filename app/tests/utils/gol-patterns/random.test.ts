@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, mock, spyOn } from "bun:test";
-import { random } from "../../src/utils/gol-pattern-generator";
-import { ALIVE, DEAD } from "../../src/utils/gol-rule";
+import { random } from "../../../src/utils/gol-patterns/random";
+import { ALIVE, DEAD } from "../../../src/utils/gol-rule";
 
 describe("random", () => {
   afterEach(() => {
@@ -12,12 +12,13 @@ describe("random", () => {
     (randomValue) => {
       // Arrange
       spyOn(Math, "random").mockImplementation(() => randomValue);
+      const sumOfCells = 1;
 
       // Act
-      const actual = random();
+      const actual = random(sumOfCells);
 
       // Assert
-      expect(actual).toBe(DEAD);
+      expect(actual).toStrictEqual([DEAD]);
     },
   );
 
@@ -26,12 +27,13 @@ describe("random", () => {
     (randomValue) => {
       // Arrange
       spyOn(Math, "random").mockImplementation(() => randomValue);
+      const sumOfCells = 1;
 
       // Act
-      const actual = random();
+      const actual = random(sumOfCells);
 
       // Assert
-      expect(actual).toBe(ALIVE);
+      expect(actual).toStrictEqual([ALIVE]);
     },
   );
 });

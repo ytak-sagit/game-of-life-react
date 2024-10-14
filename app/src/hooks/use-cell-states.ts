@@ -3,14 +3,14 @@ import {
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
-import { random } from "~/utils/gol-pattern-generator";
+import { patternStore } from "~/utils/gol-pattern-generator";
 import { renderPattern } from "~/utils/gol-pattern-renderer";
 import { ALIVE, apply, DEAD } from "~/utils/gol-rule";
 
 // TODO: hooks rename
 export const useCellStates = () => {
   const [cellStates, setCellStates] = useState(
-    [...Array(SUM_OF_CELLS)].map(random),
+    patternStore.random(SUM_OF_CELLS),
   );
   const [generation, setGeneration] = useState(0);
 

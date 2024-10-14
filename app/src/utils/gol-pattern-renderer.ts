@@ -11,7 +11,7 @@ export const renderPattern = (
   }
 
   if (patternName === "random") {
-    return [...Array(sumOfCells)].map(patternStore[patternName]);
+    return patternStore.random(sumOfCells);
   }
 
   const cellStates = Array<CellAliveState>(sumOfCells).fill(DEAD);

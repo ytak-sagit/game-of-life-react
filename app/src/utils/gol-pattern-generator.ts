@@ -8,9 +8,7 @@ import { middleweightSpaceship } from "./gol-patterns/middleweight-spaceship";
 import { nebula } from "./gol-patterns/nebula";
 import { pufferTrain } from "./gol-patterns/puffer-train";
 import { pulsar } from "./gol-patterns/pulsar";
-import { ALIVE as A, type CellAliveState, DEAD as D } from "./gol-rule";
-
-export const random = (): CellAliveState => (Math.random() >= 0.5 ? A : D);
+import { random } from "./gol-patterns/random";
 
 export const patternStore = {
   random,
