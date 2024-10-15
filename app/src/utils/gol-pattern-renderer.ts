@@ -1,7 +1,7 @@
 import { initialize } from "./gol-pattern-initializer";
 import { isValidPatternName, patternStore } from "./gol-pattern-store";
 
-export const renderPattern = (
+export const render = (
   patternName: string,
   numberOfCellsPerRow: number,
   sumOfCells: number,

@@ -4,7 +4,7 @@ import {
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
 import { initialize } from "~/utils/gol-pattern-initializer";
-import { renderPattern } from "~/utils/gol-pattern-renderer";
+import { render } from "~/utils/gol-pattern-renderer";
 import { patternStore } from "~/utils/gol-pattern-store";
 import { ALIVE, apply } from "~/utils/gol-rule";
 
@@ -33,7 +33,7 @@ export const useCellStates = () => {
   };
 
   const renderCellPattern = (patternName: string) => {
-    const renderedCellStates = renderPattern(
+    const renderedCellStates = render(
       patternName,
       NUMBER_OF_CELLS_PER_ROW,
       cellStates.length,

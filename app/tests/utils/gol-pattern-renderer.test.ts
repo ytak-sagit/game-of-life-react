@@ -1,8 +1,8 @@
 import { describe, expect, it } from "bun:test";
-import { renderPattern } from "../../src/utils/gol-pattern-renderer";
+import { render } from "../../src/utils/gol-pattern-renderer";
 import { ALIVE as A, DEAD as D } from "../../src/utils/gol-rule";
 
-describe("renderPattern", () => {
+describe("render", () => {
   it("存在しないパターン名が指定された場合、空配列が返却されること", () => {
     // Arrange
     const patternName = "undefined";
@@ -10,11 +10,7 @@ describe("renderPattern", () => {
     const anySumOfCells = 100;
 
     // Act
-    const actual = renderPattern(
-      patternName,
-      anyNumberOfCellsPerRow,
-      anySumOfCells,
-    );
+    const actual = render(patternName, anyNumberOfCellsPerRow, anySumOfCells);
 
     // Assert
     expect(actual).toEqual([]);
@@ -33,7 +29,7 @@ describe("renderPattern", () => {
     ];
 
     // Act
-    const actual = renderPattern(patternName, 5, 25);
+    const actual = render(patternName, 5, 25);
 
     // Assert
     expect(actual).toEqual(expected);
@@ -52,7 +48,7 @@ describe("renderPattern", () => {
     ];
 
     // Act
-    const actual = renderPattern(patternName, 6, 30);
+    const actual = render(patternName, 6, 30);
 
     // Assert
     expect(actual).toEqual(expected);
