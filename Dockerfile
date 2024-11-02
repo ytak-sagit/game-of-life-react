@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG UBUNTU_VERSION=20.04
+ARG UBUNTU_VERSION=22.04
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-${UBUNTU_VERSION}
 
 RUN set -x \
