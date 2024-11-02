@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { random } from "../../src/utils/gol-pattern-generator";
+import { patternStore } from "../../src/utils/gol-pattern-store";
 import { ALIVE as A, apply, DEAD as D } from "../../src/utils/gol-rule";
 
 test("死亡セルに隣接する生存セルが3つあれば、次世代が誕生（生存へ変化）すること", () => {
@@ -155,7 +155,7 @@ test("apply()実行時間の計測", () => {
 
   const width = 1280;
   const height = 800;
-  const testData = [...Array(width * height)].map(random);
+  const testData = patternStore.random(width * height);
 
   const start = process.hrtime();
 
