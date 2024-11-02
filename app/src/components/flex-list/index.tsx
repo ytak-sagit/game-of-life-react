@@ -26,12 +26,18 @@ export const FlexList: React.FC<FlexListProps> = ({
     paddingInlineStart: "unset",
     marginBlock: "unset",
   });
+  const liStyle = css({
+    marginTop: "auto",
+    marginBottom: "auto",
+  });
 
   return (
     <ul css={ulStyle}>
       {children.map((child, index) => (
         // biome-ignore lint: safe map index of array to key because static
-        <li key={index}>{child}</li>
+        <li key={index} css={liStyle}>
+          {child}
+        </li>
       ))}
     </ul>
   );
