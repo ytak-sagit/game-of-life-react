@@ -55,26 +55,30 @@ export const App = () => {
 
   return (
     <main>
-      <FlexList>
-        <button type="button" onClick={onClickStartOrStop}>
-          {isPolling ? "Stop" : "Start"}
-        </button>
-        <button type="button" onClick={onClickNext} disabled={isPolling}>
-          Next
-        </button>
-        <button type="reset" onClick={onReset} disabled={isPolling}>
-          Reset
-        </button>
-        <PatternPulldownList onChange={onChange} disabled={isPolling} />
+      <FlexList flexDirection="column">
+        <FlexList flexDirection="row">
+          <button type="button" onClick={onClickStartOrStop}>
+            {isPolling ? "Stop" : "Start"}
+          </button>
+          <button type="button" onClick={onClickNext} disabled={isPolling}>
+            Next
+          </button>
+          <button type="reset" onClick={onReset} disabled={isPolling}>
+            Reset
+          </button>
+        </FlexList>
+        <FlexList flexDirection="row">
+          <Generation value={generation} />
+          <PatternPulldownList onChange={onChange} disabled={isPolling} />
+        </FlexList>
+        <Schale
+          cellWidth={CELL_WIDTH}
+          maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
+          maxHeight={CELL_HEIGHT * NUMBER_OF_CELLS_PER_COL}
+        >
+          {cells}
+        </Schale>
       </FlexList>
-      <Generation value={generation} />
-      <Schale
-        cellWidth={CELL_WIDTH}
-        maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
-        maxHeight={CELL_HEIGHT * NUMBER_OF_CELLS_PER_COL}
-      >
-        {cells}
-      </Schale>
     </main>
   );
 };
