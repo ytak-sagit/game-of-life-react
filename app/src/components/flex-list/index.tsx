@@ -20,6 +20,7 @@ export const FlexList: React.FC<FlexListProps> = ({
     display: "flex",
     justifyContent: "center",
     flexDirection,
+    rowGap: `${gapSizePx}px`,
     columnGap: `${gapSizePx}px`,
     listStyle: "none",
     paddingInlineStart: "unset",
