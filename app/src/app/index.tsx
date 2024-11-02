@@ -56,7 +56,7 @@ export const App = () => {
   return (
     <main>
       <FlexList flexDirection="column">
-        <FlexList>
+        <FlexList flexDirection="row">
           <button type="button" onClick={onClickStartOrStop}>
             {isPolling ? "Stop" : "Start"}
           </button>
@@ -67,7 +67,7 @@ export const App = () => {
             Reset
           </button>
         </FlexList>
-        <FlexList>
+        <FlexList flexDirection="row">
           <Generation value={generation} />
           <PatternPulldownList onChange={onChange} disabled={isPolling} />
         </FlexList>
