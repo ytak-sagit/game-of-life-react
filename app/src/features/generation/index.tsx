@@ -4,5 +4,5 @@ type GenerationProps = {
 };
 
 export const Generation: React.FC<GenerationProps> = ({ value }) => {
-  return <p>Generation is #{value}</p>;
+  return <span>Generation is #{value}</span>;
 };
