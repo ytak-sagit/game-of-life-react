@@ -44,7 +44,6 @@ export const PatternPulldownList: React.FC<PatternPulldownListProps> = ({
     },
   });
 
-  // TODO: 描画範囲を超えるパターンのoptionはdisabledとする
   return (
     <select
       css={selectStyle}
