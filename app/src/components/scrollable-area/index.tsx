@@ -1,33 +1,31 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import {
-  CELL_HEIGHT,
-  CELL_WIDTH,
-  NUMBER_OF_CELLS_PER_COL,
-  NUMBER_OF_CELLS_PER_ROW,
-} from "~/config/environments";
-
-const areaWidth =
-  Math.min(
-    NUMBER_OF_CELLS_PER_ROW,
-    Math.trunc(window.innerWidth / CELL_WIDTH) - 4,
-  ) * CELL_WIDTH;
-const areaHeight =
-  Math.min(
-    NUMBER_OF_CELLS_PER_COL,
-    Math.trunc(window.innerHeight / CELL_HEIGHT) - 14,
-  ) * CELL_HEIGHT;
 
 type ScrollableAreaProps = {
+  /**
+   * スクロール可能領域の横幅(pixel)
+   * @description schale の max-width より小さい値を指定する
+   */
+  width: number;
+  /**
+   * スクロール可能領域の縦幅(pixel)
+   * @description schale の max-height より小さい値を指定する
+   */
+  height: number;
   /** スクロール可能領域に表示する子要素 */
   children: React.ReactNode;
 };
 
-export const ScrollableArea: React.FC<ScrollableAreaProps> = ({ children }) => {
+export const ScrollableArea: React.FC<ScrollableAreaProps> = ({
+  width,
+  height,
+  children,
+}) => {
   const style = css({
-    display: "flex", //blockだとダメ
-    width: `${areaWidth}px`, //max-widthより小さい値
-    height: `${areaHeight}px`, //min-widthより小さい値
+    // NOTE: display: "block" だと幅が子要素へ伝搬してしまうため、"flex" としている
+    display: "flex",
+    width,
+    height,
     overflow: "auto",
   });
   return <div css={style}>{children}</div>;
