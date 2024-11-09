@@ -1,0 +1,12 @@
+name: GITHUB_ENV test after
+on:
+  workflow_run:
+    workflows: GITHUB_ENV test before
+    branches: main
+    types: completed
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${TEST_RESULT}"
+      - run: echo "${{ env.TEST_RESULT }}"
