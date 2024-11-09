@@ -11,20 +11,14 @@ on:
 
   workflow_dispatch:  # NOTE: 手動でもデプロイできるようにしておく
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    permissions:
+      contents: read
 
     runs-on: ubuntu-latest
 
@@ -54,6 +48,21 @@ jobs:
         with:
           path: ./app/dist
 
+  deploy:
+    needs: build
+    if: ${{ success() }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
