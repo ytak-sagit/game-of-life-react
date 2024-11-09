@@ -28,16 +28,3 @@ jobs:
       - name: Run Unit Test
         run: bun test
         working-directory: ./app
-
-      - name: Get Target Site URL
-        id: target
-        run: |
-          echo "url=$( \
-            gh api \
-              -H 'Accept: application/vnd.github+json' \
-              -H 'X-GitHub-Api-Version: 2022-11-28' \
-              /repos/ytak-sagit/game-of-life-react/pages \
-            | jq -r '.html_url' \
-          )"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
