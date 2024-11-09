@@ -1,7 +1,7 @@
 name: GITHUB_ENV test after
 on:
   workflow_run:
-    workflows: GITHUB_ENV test before
+    workflows: Run Unit Test
     types: completed
 jobs:
   test:
