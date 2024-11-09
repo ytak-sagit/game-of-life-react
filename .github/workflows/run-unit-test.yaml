@@ -28,6 +28,3 @@ jobs:
       - name: Run Unit Test
         run: bun test
         working-directory: ./app
-
-      - run: echo "TEST_RESULT=hoge" >> "${GITHUB_ENV}"
-        shell: bash
