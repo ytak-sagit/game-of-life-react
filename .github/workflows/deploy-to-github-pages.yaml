@@ -74,7 +74,8 @@ jobs:
     needs: deploy
     if: ${{ success() }}
 
-    permissions: {}
+    permissions:
+      issues: write
 
     uses: ./.github/workflows/owasp-zap-scan.yaml
     with:
