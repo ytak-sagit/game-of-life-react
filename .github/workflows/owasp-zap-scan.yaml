@@ -14,11 +14,12 @@ on:
         required: true
         description: GitHub トークン
 
-permissions: {}
-
 jobs:
   scan:
     runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
 
     steps:
       - name: Owasp Zap Baseline Scan
