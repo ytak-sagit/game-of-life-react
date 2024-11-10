@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 import { FlexList } from "~/components/flex-list";
-import { ScrollableArea } from "~/components/scrollable-area";
+import { ScrollableView } from "~/components/scrollable-view";
 import {
   CELL_HEIGHT,
   CELL_WIDTH,
@@ -74,7 +74,7 @@ export const App = () => {
           <Generation value={generation} />
           <PatternPulldownList onChange={onChange} disabled={isPolling} />
         </FlexList>
-        <ScrollableArea
+        <ScrollableView
           width={SCROLLABLE_AREA_WIDTH}
           height={SCROLLABLE_AREA_HEIGHT}
         >
@@ -85,7 +85,7 @@ export const App = () => {
           >
             {cells}
           </Schale>
-        </ScrollableArea>
+        </ScrollableView>
       </FlexList>
     </main>
   );

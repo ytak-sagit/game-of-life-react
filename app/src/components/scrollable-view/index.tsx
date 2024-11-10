@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-type ScrollableAreaProps = {
+type ScrollableViewProps = {
   /**
    * スクロール可能領域の横幅(pixel)
    * @description schale の max-width より小さい値を指定する
@@ -16,7 +16,7 @@ type ScrollableAreaProps = {
   children: React.ReactNode;
 };
 
-export const ScrollableArea: React.FC<ScrollableAreaProps> = ({
+export const ScrollableView: React.FC<ScrollableViewProps> = ({
   width,
   height,
   children,
