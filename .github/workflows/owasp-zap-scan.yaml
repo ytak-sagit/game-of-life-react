@@ -3,41 +3,24 @@ name: OWASP ZAP Scan
 run-name: OWASP ZAP Scan
 
 on:
-  workflow_run:
-    workflows: Deploy to Github Pages
-    branches: main
-    types: completed
+  workflow_call:
+    inputs:
+      target-url:
+        type: string
+        required: true
+        description: OWASP ZAP のスキャン対象ページ URL
 
 permissions: {}
 
 jobs:
   scan:
-    env:
-      OWNER_NAME: ${{ github.event.workflow_run.repository.owner.name }}
-      REPOSITORY_NAME: ${{ github.event.workflow_run.repository.name }}
-
     runs-on: ubuntu-latest
 
     steps:
-      # デプロイ先の GitHub Pages URL を GitHub CLI API 経由で取得する
-      # https://docs.github.com/ja/rest/pages/pages?apiVersion=2022-11-28#get-a-github-pages-site
-      - name: Get Target Site URL
-        id: target
-        run: |
-          echo "url=$( \
-            gh api \
-              -H 'Accept: application/vnd.github+json' \
-              -H 'X-GitHub-Api-Version: 2022-11-28' \
-              /repos/${{ env.OWNER_NAME }}/${{ env.REPOSITORY_NAME }}/pages \
-            | jq -r '.html_url' \
-          )" >> "${GITHUB_OUTPUT}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Owasp Zap Baseline Scan
         uses: zaproxy/action-baseline@v0.13.0
         with:
-          target: ${{ steps.target.outputs.url }}
+          target: ${{ inputs.target-url }}
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           cmd_options: '-a'
