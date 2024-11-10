@@ -60,9 +60,22 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
+    outputs:
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  dast:
+    needs: deploy
+    if: ${{ success() }}
+
+    permissions: {}
+
+    uses: ./.github/workflows/owasp-zap-scan.yaml
+    with:
+      target-url: ${{ needs.deploy.outputs.url }}
