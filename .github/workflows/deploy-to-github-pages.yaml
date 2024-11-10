@@ -79,3 +79,5 @@ jobs:
     uses: ./.github/workflows/owasp-zap-scan.yaml
     with:
       target-url: ${{ needs.deploy.outputs.url }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

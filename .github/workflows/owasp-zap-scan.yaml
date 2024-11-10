@@ -9,6 +9,10 @@ on:
         type: string
         required: true
         description: OWASP ZAP のスキャン対象ページ URL
+    secrets:
+      token:
+        required: true
+        description: GitHub トークン
 
 permissions: {}
 
@@ -21,6 +25,6 @@ jobs:
         uses: zaproxy/action-baseline@v0.13.0
         with:
           target: ${{ inputs.target-url }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.token }}
           docker_name: 'owasp/zap2docker-stable'
           cmd_options: '-a'
