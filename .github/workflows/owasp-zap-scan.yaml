@@ -1,0 +1,30 @@
+name: OWASP ZAP Scan
+
+run-name: OWASP ZAP Scan
+
+on:
+  workflow_call:
+    inputs:
+      target-url:
+        type: string
+        required: true
+        description: OWASP ZAP のスキャン対象ページ URL
+    secrets:
+      token:
+        required: true
+        description: GitHub トークン
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+
+    steps:
+      - name: Owasp Zap Baseline Scan
+        uses: zaproxy/action-baseline@v0.13.0
+        with:
+          target: ${{ inputs.target-url }}
+          token: ${{ secrets.token }}
+          cmd_options: '-a'
