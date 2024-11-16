@@ -1,13 +1,11 @@
 import type { ChangeEvent } from "react";
 import { FlexList } from "~/components/flex-list";
-import { ScrollableArea } from "~/components/scrollable-area";
+import { ScrollableView } from "~/components/scrollable-view";
 import {
   CELL_HEIGHT,
   CELL_WIDTH,
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
-  SCROLLABLE_AREA_HEIGHT,
-  SCROLLABLE_AREA_WIDTH,
 } from "~/config/environments";
 import { Cell } from "~/features/cell";
 import { Generation } from "~/features/generation";
@@ -74,10 +72,7 @@ export const App = () => {
           <Generation value={generation} />
           <PatternPulldownList onChange={onChange} disabled={isPolling} />
         </FlexList>
-        <ScrollableArea
-          width={SCROLLABLE_AREA_WIDTH}
-          height={SCROLLABLE_AREA_HEIGHT}
-        >
+        <ScrollableView>
           <Schale
             cellWidth={CELL_WIDTH}
             maxWidth={CELL_WIDTH * NUMBER_OF_CELLS_PER_ROW}
@@ -85,7 +80,7 @@ export const App = () => {
           >
             {cells}
           </Schale>
-        </ScrollableArea>
+        </ScrollableView>
       </FlexList>
     </main>
   );
