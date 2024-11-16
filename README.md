@@ -6,17 +6,19 @@
 
 ## 🔧技術スタック一覧
 
-<img src="https://img.shields.io/badge/1.1.34-Bun-2f3339.svg?logo=bun&style=for-the-badge">
-<img src="https://img.shields.io/badge/5.3.4-Vite-bd34fe.svg?logo=vite&style=for-the-badge">
-<img src="https://img.shields.io/badge/18.3.1-React-61dafb.svg?logo=react&style=for-the-badge">
-<img src="https://img.shields.io/badge/5.2.2-Typescript-007acc.svg?logo=typescript&style=for-the-badge">
-<img src="https://img.shields.io/badge/11.13.0-Emotion-d26ac2.svg?logo=emotion&style=for-the-badge">
-<img src="https://img.shields.io/badge/1.8.3-Biome-60a5fa.svg?logo=biome&style=for-the-badge">
-<img src="https://img.shields.io/badge/27.1.1-Docker-1488c6.svg?logo=docker&style=for-the-badge">
-<img src="https://img.shields.io/badge/2.29.1-Docker_Compose-ff3399.svg?logo=dockercompose&style=for-the-badge">
-<img src="https://img.shields.io/badge/-devcontainer-2f3339.svg?logo=devcontainer&style=for-the-badge">
-<img src="https://img.shields.io/badge/-GitHub_Actions-2f3339.svg?logo=githubactions&style=for-the-badge">
-<img src="https://img.shields.io/badge/-GitHub_Pages-2f3339.svg?logo=githubpages&style=for-the-badge">
+<p style="display: inline">
+  <img src="https://img.shields.io/badge/1.1.34-Bun-2f3339.svg?logo=bun&style=for-the-badge">
+  <img src="https://img.shields.io/badge/5.3.4-Vite-bd34fe.svg?logo=vite&style=for-the-badge">
+  <img src="https://img.shields.io/badge/18.3.1-React-61dafb.svg?logo=react&style=for-the-badge">
+  <img src="https://img.shields.io/badge/5.2.2-Typescript-007acc.svg?logo=typescript&style=for-the-badge">
+  <img src="https://img.shields.io/badge/11.13.0-Emotion-d26ac2.svg?logo=emotion&style=for-the-badge">
+  <img src="https://img.shields.io/badge/1.8.3-Biome-60a5fa.svg?logo=biome&style=for-the-badge">
+  <img src="https://img.shields.io/badge/27.1.1-Docker-1488c6.svg?logo=docker&style=for-the-badge">
+  <img src="https://img.shields.io/badge/2.29.1-Docker_Compose-ff3399.svg?logo=dockercompose&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-devcontainer-2f3339.svg?logo=devcontainer&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-GitHub_Actions-2f3339.svg?logo=githubactions&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-GitHub_Pages-2f3339.svg?logo=githubpages&style=for-the-badge">
+</p>
 
 ## 📂ディレクトリ構成
 
@@ -33,7 +35,7 @@ GitHub Pages にアプリケーションをデプロイして公開していま�
 - 画面の初期表示時は、セルがランダムに配置されます。
 - セルの描画領域（シャーレ）のサイズは「縦128セル x 横128セル」で固定です。
 - 各セルをクリックすることで、セルの生死状態を切り替えることができます。
-  - 「生存」セルは <span style="color: #00ff2a; font-size: 1em;">■</span> 、「死滅」セルは <span style="color: #333333; font-size: 1em;">■</span> で表現しています。
+  - 「生存」セルは ![#00ff2a](https://placehold.co/12x12/00ff2a/00ff2a.png) 、「死滅」セルは ![#333333](https://placehold.co/12x12/333333/333333.png) で表現しています。
 - [Start]ボタンを押すと、ライフゲームのルールに基づくセルの生死判定と次世代セルの描画を自動で行います。
   - 自動処理中は、[Stop]ボタンを押す以外の操作は行えません。
 - [Stop]ボタンを押すと、生死判定および自動描画が停止します。
