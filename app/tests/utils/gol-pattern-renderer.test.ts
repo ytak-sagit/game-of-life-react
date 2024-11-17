@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import { render } from "../../src/utils/gol-pattern-renderer";
-import { ALIVE as A, DEAD as D } from "../../src/utils/gol-rule";
+import { render } from "~/src/utils/gol-pattern-renderer";
+import { ALIVE as A, DEAD as D } from "~/src/utils/types/cell-state";
 
 describe("render", () => {
   it("存在しないパターン名が指定された場合、空配列が返却されること", () => {

@@ -1,5 +1,5 @@
-import { ALIVE as A, DEAD as D } from "../gol-rule";
-import type { PatternConfigs } from "./types";
+import { ALIVE as A, DEAD as D } from "../types/cell-state";
+import type { PatternConfigs } from "../types/pattern-configs";
 
 // 時計I
 export const clock01: PatternConfigs = {

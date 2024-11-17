@@ -1,6 +1,6 @@
-import { ALIVE as A, type CellAliveState, DEAD as D } from "../gol-rule";
+import { ALIVE as A, DEAD as D, type CellState } from "../types/cell-state";
 
-const randomize = (): CellAliveState => (Math.random() >= 0.5 ? A : D);
+const randomize = (): CellState => (Math.random() >= 0.5 ? A : D);
 
 // ランダム配置
 export const random = (sumOfCells: number) =>
