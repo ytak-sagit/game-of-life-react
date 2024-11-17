@@ -7,7 +7,7 @@ import { initialize } from "~/utils/gol-pattern-initializer";
 import { render } from "~/utils/gol-pattern-renderer";
 import { patternStore } from "~/utils/gol-pattern-store";
 import { apply } from "~/utils/gol-rule";
-import { ALIVE } from "~/utils/types/cell-state";
+import { toggle } from "~/utils/toggle-cell-state";
 
 // TODO: hooks rename
 export const useCellStates = () => {
@@ -29,7 +29,7 @@ export const useCellStates = () => {
   };
 
   const toggleCellStateAt = (index: number) => {
-    cellStates[index] ^= ALIVE;
+    cellStates[index] = toggle(cellStates[index]);
     setCellStates([...cellStates]);
   };
 
