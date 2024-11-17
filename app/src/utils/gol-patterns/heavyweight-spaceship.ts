@@ -1,4 +1,4 @@
-import { ALIVE as A, DEAD as D } from "../gol-rule";
+import { ALIVE as A, DEAD as D } from "~/types/cell-state";
 import type { PatternConfigs } from "./types";
 
 // 重量級宇宙船

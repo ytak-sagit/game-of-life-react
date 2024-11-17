@@ -1,7 +1,4 @@
-import type { CellState } from "~/types/cell-state";
-
-export const DEAD = 0 as const;
-export const ALIVE = 1 as const;
+import { ALIVE, DEAD, type CellState } from "~/types/cell-state";
 
 export const apply = (
   currentCellStates: ReadonlyArray<CellState>,
