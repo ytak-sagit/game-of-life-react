@@ -9,7 +9,6 @@ import { patternStore } from "~/utils/gol-pattern-store";
 import { apply } from "~/utils/gol-rule";
 import { toggle } from "~/utils/toggle-cell-state";
 
-// TODO: hooks rename
 export const useCellStates = () => {
   const [cellStates, setCellStates] = useState(
     patternStore.random(SUM_OF_CELLS),
