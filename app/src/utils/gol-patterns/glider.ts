@@ -1,5 +1,5 @@
 import { ALIVE as A, DEAD as D } from "../types/cell-state";
-import type { PatternConfigs } from "./types";
+import type { PatternConfigs } from "../types/pattern-configs";
 
 // グライダー
 export const glider: PatternConfigs = {

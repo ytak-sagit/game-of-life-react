@@ -1,4 +1,4 @@
-import type { CellState } from "../types/cell-state";
+import type { CellState } from "./cell-state";
 
 export type PatternConfigs = {
   width: number;

@@ -1,5 +1,5 @@
 import { ALIVE as A, DEAD as D } from "../types/cell-state";
-import type { PatternConfigs } from "./types";
+import type { PatternConfigs } from "../types/pattern-configs";
 
 // 軽量級宇宙船
 export const lightweightSpaceship: PatternConfigs = {
