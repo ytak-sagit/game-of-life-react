@@ -32,6 +32,10 @@ jobs:
           # TODO: バージョンは固定の方が安定して良さそう
           bun-version: latest
 
+      - name: Set environment variables
+        run: mv .env.example .env
+        working-directory: ./app
+
       - name: Install dependencies
         run: bun install
         working-directory: ./app
