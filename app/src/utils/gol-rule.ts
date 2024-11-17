@@ -1,14 +1,14 @@
+import type { CellState } from "~/types/cell-state";
+
 export const DEAD = 0 as const;
 export const ALIVE = 1 as const;
 
-export type CellAliveState = typeof DEAD | typeof ALIVE;
-
 export const apply = (
-  currentCellStates: ReadonlyArray<CellAliveState>,
+  currentCellStates: ReadonlyArray<CellState>,
   width: number,
   height: number,
 ) => {
-  const nextCellStates = Array<CellAliveState>(currentCellStates.length);
+  const nextCellStates = Array<CellState>(currentCellStates.length);
 
   for (let i = 0; i < currentCellStates.length; i++) {
     const _isUpEdge = isUpEdge(i, width);

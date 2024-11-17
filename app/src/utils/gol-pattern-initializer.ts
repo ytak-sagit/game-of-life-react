@@ -1,4 +1,5 @@
-import { type CellAliveState, DEAD } from "./gol-rule";
+import type { CellState } from "~/types/cell-state";
+import { DEAD } from "./gol-rule";
 
 export const initialize = (sumOfCells: number) =>
-  Array<CellAliveState>(sumOfCells).fill(DEAD);
+  Array<CellState>(sumOfCells).fill(DEAD);

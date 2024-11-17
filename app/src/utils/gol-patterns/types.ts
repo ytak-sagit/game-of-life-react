@@ -1,7 +1,7 @@
-import type { CellAliveState } from "../gol-rule";
+import type { CellState } from "~/types/cell-state";
 
 export type PatternConfigs = {
   width: number;
   height: number;
-  cells: ReadonlyArray<CellAliveState>;
+  cells: ReadonlyArray<CellState>;
 };
