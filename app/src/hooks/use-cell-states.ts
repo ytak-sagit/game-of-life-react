@@ -3,11 +3,11 @@ import {
   NUMBER_OF_CELLS_PER_COL,
   NUMBER_OF_CELLS_PER_ROW,
 } from "~/config/environments";
-import { ALIVE } from "~/types/cell-state";
 import { initialize } from "~/utils/gol-pattern-initializer";
 import { render } from "~/utils/gol-pattern-renderer";
 import { patternStore } from "~/utils/gol-pattern-store";
 import { apply } from "~/utils/gol-rule";
+import { ALIVE } from "~/utils/types/cell-state";
 
 // TODO: hooks rename
 export const useCellStates = () => {

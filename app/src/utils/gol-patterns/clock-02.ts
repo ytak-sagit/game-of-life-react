@@ -1,4 +1,4 @@
-import { ALIVE as A, DEAD as D } from "~/types/cell-state";
+import { ALIVE as A, DEAD as D } from "../types/cell-state";
 import type { PatternConfigs } from "./types";
 
 // 時計II

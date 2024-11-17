@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, mock, spyOn } from "bun:test";
-import { ALIVE, DEAD } from "~/src/types/cell-state";
 import { random } from "~/src/utils/gol-patterns/random";
+import { ALIVE, DEAD } from "~/src/utils/types/cell-state";
 
 describe("random", () => {
   afterEach(() => {

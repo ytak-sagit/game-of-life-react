@@ -1,4 +1,4 @@
-import { ALIVE as A, DEAD as D, type CellState } from "~/types/cell-state";
+import { ALIVE as A, DEAD as D, type CellState } from "../types/cell-state";
 
 const randomize = (): CellState => (Math.random() >= 0.5 ? A : D);
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import { DEAD } from "~/src/types/cell-state";
 import { initialize } from "~/src/utils/gol-pattern-initializer";
+import { DEAD } from "~/src/utils/types/cell-state";
 
 describe("initialize", () => {
   it("DEAD状態のセルを10件持つ配列が返却されること", () => {

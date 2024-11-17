@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
-import { ALIVE as A, DEAD as D } from "~/src/types/cell-state";
 import { patternStore } from "~/src/utils/gol-pattern-store";
 import { apply } from "~/src/utils/gol-rule";
+import { ALIVE as A, DEAD as D } from "~/src/utils/types/cell-state";
 
 test("死亡セルに隣接する生存セルが3つあれば、次世代が誕生（生存へ変化）すること", () => {
   // Arrange

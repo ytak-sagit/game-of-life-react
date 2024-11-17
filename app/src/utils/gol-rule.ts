@@ -1,4 +1,4 @@
-import { ALIVE, DEAD, type CellState } from "~/types/cell-state";
+import { ALIVE, DEAD, type CellState } from "./types/cell-state";
 
 export const apply = (
   currentCellStates: ReadonlyArray<CellState>,
