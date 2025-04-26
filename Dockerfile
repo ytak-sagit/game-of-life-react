@@ -22,7 +22,5 @@ USER ${USERNAME}
 
 WORKDIR /workspace/app
 
-RUN mkdir node_modules
-
 # コンテナ起動時のデフォルトコマンドを設定
 CMD ["/bin/bash"]
