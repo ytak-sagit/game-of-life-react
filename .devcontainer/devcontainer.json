@@ -5,6 +5,7 @@
   ],
   "service": "app",
   "workspaceFolder": "/workspace/app",
+  "initializeCommand": "mkdir -p app",
   "postAttachCommand": "git config --global --add safe.directory /workspace",
   "remoteUser": "vscode",
   "updateRemoteUserUID": true,
