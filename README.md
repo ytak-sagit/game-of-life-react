@@ -7,12 +7,12 @@
 ## 🔧技術スタック一覧
 
 <p style="display: inline">
-  <img src="https://img.shields.io/badge/1.1.34-Bun-2f3339.svg?logo=bun&style=for-the-badge">
-  <img src="https://img.shields.io/badge/5.3.4-Vite-bd34fe.svg?logo=vite&style=for-the-badge">
-  <img src="https://img.shields.io/badge/18.3.1-React-61dafb.svg?logo=react&style=for-the-badge">
-  <img src="https://img.shields.io/badge/5.2.2-Typescript-007acc.svg?logo=typescript&style=for-the-badge">
-  <img src="https://img.shields.io/badge/11.13.0-Emotion-d26ac2.svg?logo=emotion&style=for-the-badge">
-  <img src="https://img.shields.io/badge/1.8.3-Biome-60a5fa.svg?logo=biome&style=for-the-badge">
+  <img src="https://img.shields.io/badge/1.2.10-Bun-2f3339.svg?logo=bun&style=for-the-badge">
+  <img src="https://img.shields.io/badge/5.4.18-Vite-bd34fe.svg?logo=vite&style=for-the-badge">
+  <img src="https://img.shields.io/badge/19.1.0-React-61dafb.svg?logo=react&style=for-the-badge">
+  <img src="https://img.shields.io/badge/5.8.3-Typescript-007acc.svg?logo=typescript&style=for-the-badge">
+  <img src="https://img.shields.io/badge/11.14.0-Emotion-d26ac2.svg?logo=emotion&style=for-the-badge">
+  <img src="https://img.shields.io/badge/1.9.4-Biome-60a5fa.svg?logo=biome&style=for-the-badge">
   <img src="https://img.shields.io/badge/27.1.1-Docker-1488c6.svg?logo=docker&style=for-the-badge">
   <img src="https://img.shields.io/badge/2.29.1-Docker_Compose-ff3399.svg?logo=dockercompose&style=for-the-badge">
   <img src="https://img.shields.io/badge/-devcontainer-2f3339.svg?logo=devcontainer&style=for-the-badge">
@@ -55,3 +55,7 @@ GitHub Pages にアプリケーションをデプロイして公開していま�
 ### その他
 
 - ダークモード・ライトモードでの表示に対応しています。
+
+## ライセンス
+
+当リポジトリは[Apache-2.0](/LICENSE)ライセンスの下で公開しています。
