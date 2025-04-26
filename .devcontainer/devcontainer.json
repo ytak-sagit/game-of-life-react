@@ -28,7 +28,8 @@
           // VSCode の organizeImports 設定を追加しておく
           "source.organizeImports": "explicit"
         },
-        "editor.defaultFormatter": "biomejs.biome"
+        "editor.defaultFormatter": "biomejs.biome",
+        "git.openRepositoryInParentFolders": "always"
       }
     }
   }
