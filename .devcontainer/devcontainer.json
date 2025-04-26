@@ -4,13 +4,16 @@
     "../compose.yaml"
   ],
   "service": "app",
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/workspace/app",
+  "initializeCommand": "mkdir -p app",
+  "postAttachCommand": "git config --global --add safe.directory /workspace",
   "remoteUser": "vscode",
   "updateRemoteUserUID": true,
   "customizations": {
     "vscode": {
       "extensions": [
-        "biomejs.biome"
+        "biomejs.biome",
+        "mhutchie.git-graph"
       ],
       "settings": {
         "files.autoSave": "off",
@@ -26,7 +29,8 @@
           // VSCode の organizeImports 設定を追加しておく
           "source.organizeImports": "explicit"
         },
-        "editor.defaultFormatter": "biomejs.biome"
+        "editor.defaultFormatter": "biomejs.biome",
+        "git.openRepositoryInParentFolders": "always"
       }
     }
   }

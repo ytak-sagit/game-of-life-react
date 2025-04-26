@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1
 
-ARG UBUNTU_VERSION=22.04
+ARG UBUNTU_VERSION=24.04
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-${UBUNTU_VERSION}
 
 RUN set -x \
@@ -11,10 +11,16 @@ RUN set -x \
 RUN set -x \
     && curl -fsSL https://bun.sh/install | BUN_INSTALL=/usr bash
 
+# git
+RUN set -x \
+    && apt install -y git \
+    && apt clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
 ARG USERNAME=vscode
 USER ${USERNAME}
 
-WORKDIR /app
+WORKDIR /workspace/app
 
 RUN mkdir node_modules
 
