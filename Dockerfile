@@ -20,7 +20,7 @@ RUN set -x \
 ARG USERNAME=vscode
 USER ${USERNAME}
 
-WORKDIR /app
+WORKDIR /workspace/app
 
 RUN mkdir node_modules
 

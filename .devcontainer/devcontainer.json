@@ -4,7 +4,7 @@
     "../compose.yaml"
   ],
   "service": "app",
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/workspace/app",
   "remoteUser": "vscode",
   "updateRemoteUserUID": true,
   "customizations": {
