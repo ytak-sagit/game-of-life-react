@@ -11,12 +11,6 @@ RUN set -x \
 RUN set -x \
     && curl -fsSL https://bun.sh/install | BUN_INSTALL=/usr bash
 
-# git
-RUN set -x \
-    && apt install -y git \
-    && apt clean -y \
-    && rm -rf /var/lib/apt/lists/*
-
 ARG USERNAME=vscode
 USER ${USERNAME}
 
