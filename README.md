@@ -8,7 +8,6 @@
 
 <p style="display: inline">
   <img src="https://img.shields.io/badge/1.2.10-Bun-2f3339.svg?logo=bun&style=for-the-badge">
-  <img src="https://img.shields.io/badge/5.4.18-Vite-bd34fe.svg?logo=vite&style=for-the-badge">
   <img src="https://img.shields.io/badge/19.1.0-React-61dafb.svg?logo=react&style=for-the-badge">
   <img src="https://img.shields.io/badge/5.8.3-Typescript-007acc.svg?logo=typescript&style=for-the-badge">
   <img src="https://img.shields.io/badge/11.14.0-Emotion-d26ac2.svg?logo=emotion&style=for-the-badge">
