@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import type React from "react";
 
 type SchaleProps = {
   /** セルの横幅 */
