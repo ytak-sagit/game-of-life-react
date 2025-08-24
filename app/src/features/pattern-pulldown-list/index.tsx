@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import type React from "react";
 import type { SelectHTMLAttributes } from "react";
 import type { PatternName } from "~/utils/gol-pattern-store";
 

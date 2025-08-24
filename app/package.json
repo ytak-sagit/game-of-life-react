@@ -1,13 +1,15 @@
 {
   "name": "app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2.0",
   "type": "module",
+  "main": "src/index.tsx",
+  "module": "src/index.tsx",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "bunx @biomejs/biome lint ./src",
-    "preview": "vite preview"
+    "dev": "bun --hot src/index.tsx",
+    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
+    "start": "NODE_ENV=production bun src/index.tsx",
+    "lint": "bunx @biomejs/biome lint ./src"
   },
   "dependencies": {
     "@emotion/css": "^11.13.5",
@@ -20,9 +22,6 @@
     "@types/bun": "^1.2.10",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react-swc": "^3.9.0",
-    "typescript": "^5.8.3",
-    "vite": "^5.4.18",
-    "vite-tsconfig-paths": "^5.1.4"
+    "typescript": "^5.8.3"
   }
 }
